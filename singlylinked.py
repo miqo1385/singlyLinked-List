@@ -1,3 +1,6 @@
+import unittest
+
+
 class Node:
     def __init__(self, data=None):
         self.data = data
@@ -78,11 +81,43 @@ def isHealthRecordSymmetric(head):
 
 # Example usage:
 # Create a singly linked list with symmetric data
-linked_list1 = SinglyLinkedList.from_list([70, 80, 80, 70])
-linked_list2 = SinglyLinkedList.from_list([90, 100, 110, 100, 90])
-linked_list3 = SinglyLinkedList.from_list([120 / 80, 130 / 85, 125 / 82])
+# linked_list1 = SinglyLinkedList.from_list([70, 80, 80, 70])
+# linked_list2 = SinglyLinkedList.from_list([90, 100, 110, 100, 90])
+# linked_list3 = SinglyLinkedList.from_list([120 / 80, 130 / 85, 125 / 82])
 
 # Check if the health record is symmetric
-print(isHealthRecordSymmetric(linked_list1.head))  # Output: True
-print(isHealthRecordSymmetric(linked_list2.head))  # Output: True
-print(isHealthRecordSymmetric(linked_list3.head))  # Output: False
+# print(isHealthRecordSymmetric(linked_list1.head))  # Output: True
+# print(isHealthRecordSymmetric(linked_list2.head))  # Output: True
+# print(isHealthRecordSymmetric(linked_list3.head))  # Output: False
+
+class TestingSingly(unittest.TestCase):
+
+    def test01(self):
+        linked_list1 = SinglyLinkedList.from_list([70, 80, 80, 70])
+        self.assertEqual(isHealthRecordSymmetric(linked_list1.head), True)
+
+    def test02(self):
+        linked_list2 = SinglyLinkedList.from_list([90, 100, 110, 100, 90])
+        self.assertEqual(isHealthRecordSymmetric(linked_list2.head), True)
+
+    def test03(self):
+        linked_list2 = SinglyLinkedList.from_list([120 / 80, 130 / 85, 125 / 82])
+        self.assertEqual(isHealthRecordSymmetric(linked_list2.head), False)
+
+    def test04(self):
+        linked_list2 = SinglyLinkedList.from_list([120 / 80, 130 / 85, 140 / 82])
+        self.assertEqual(isHealthRecordSymmetric(linked_list2.head), False)
+
+    def test04(self):
+        linked_list2 = SinglyLinkedList.from_list([100, 90, 80])
+        self.assertEqual(isHealthRecordSymmetric(linked_list2.head), False)
+
+    def test05(self):
+        linked_list2 = SinglyLinkedList.from_list([])
+        self.assertEqual(isHealthRecordSymmetric(linked_list2.head), True)
+
+
+
+
+if __name__ == '__main__':
+    unittest.main()
